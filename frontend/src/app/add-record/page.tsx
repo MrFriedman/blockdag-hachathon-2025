@@ -45,12 +45,20 @@ const AddRecord = () => {
     bloodType: "",
     vitalSigns: ""
   });
+  const [contractData, setContractData] = useState({
+    diagnosis: "",
+    treatment: ""
+  });
 
   const [files, setFiles] = useState<FileList | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleContractChange = (field: string, value: string) => {
+    setContractData(prev => ({ ...prev, [field]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +71,7 @@ const AddRecord = () => {
 
     // Simulate blockchain submission
     await new Promise(resolve => setTimeout(resolve, 2000));
+    //addRecord(...??)
 
     toast({
       title: "Record Added Successfully",
@@ -83,6 +92,10 @@ const AddRecord = () => {
       allergies: "",
       bloodType: "",
       vitalSigns: ""
+    });
+    setContractData({
+      diagnosis: "",
+      treatment: ""
     });
     setFiles(null);
   };
@@ -283,6 +296,29 @@ const AddRecord = () => {
                       rows={4}
                       className="border-accent/20 focus:border-accent"
                     />
+                  </div>
+                  {/*Diag and treatment for contract*/}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="diagnosis">Diagnosis</Label>
+                      <Textarea
+                        id="diagnosis"
+                        value={formData.diagnosis}
+                        onChange={(e) => handleInputChange("diagnosis", e.target.value)}
+                        placeholder="Medical diagnosis or findings"
+                        rows={2}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="treatment">treatment</Label>
+                      <Textarea
+                        id="treatment"
+                        value={formData.medications}
+                        onChange={(e) => handleInputChange("treatment", e.target.value)}
+                        placeholder="Prescribed treatment"
+                        rows={2}
+                      />
+                    </div>
                   </div>
                 </CardContent>
               </Card>
