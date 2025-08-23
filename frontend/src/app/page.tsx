@@ -59,11 +59,11 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="default" className="text-lg px-8 py-6" onClick={() => window.location.href = '/getting-started'}>
+                <Button size="lg" variant="default" className="text-lg px-8 py-6" onClick={() => window.location.href = '/signup'}>
                   Start Your Journey
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={() => window.location.href = '/login'}>
-                  Sign Up
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={() => window.location.href = '/signin'}>
+                  Login
                 </Button>
               </div>
               <div className="grid grid-cols-3 gap-4">

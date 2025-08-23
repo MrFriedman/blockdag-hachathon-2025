@@ -43,7 +43,7 @@ export default function Login() {
         <div className="mt-6 text-center">
           <p className="text-center text-muted-foreground mt-4">
             Don't have an account?{' '}
-            <Link href="/getting-started" className="font-semibold text-primary hover:underline">
+            <Link href="/signup" className="font-semibold text-primary hover:underline">
               Sign up
             </Link>
           </p>

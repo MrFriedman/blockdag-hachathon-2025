@@ -147,3 +147,12 @@
     background: linear-gradient(135deg, #FF69B4, #FF8C00); /* Pink to Orange */
   }
 }
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
