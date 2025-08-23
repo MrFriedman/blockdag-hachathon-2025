@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import FeatureCard from "@/components/FeatureCard";
 import TrustIndicator from "@/components/TrustIndicator";
+import Image from "next/image";
 
 const HomePage = () => {
   return (
@@ -61,8 +62,8 @@ const HomePage = () => {
                 <Button size="lg" variant="default" className="text-lg px-8 py-6" onClick={() => window.location.href = '/getting-started'}>
                   Start Your Journey
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6">
-                  Learn More
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={() => window.location.href = '/login'}>
+                  Sign Up
                 </Button>
               </div>
               <div className="grid grid-cols-3 gap-4">
@@ -72,10 +73,13 @@ const HomePage = () => {
               </div>
             </div>
             <div className="relative">
-              <img
-                src="/images/hero-womens-health.jpg"
+              <Image
+                src="/image7.svg"
                 alt="Women's health technology platform"
                 className="rounded-2xl shadow-strong animate-float"
+                width={500} // Adjust width as needed
+                height={500} // Adjust height as needed
+                priority
               />
               <div className="absolute inset-0 gradient-hero opacity-20 rounded-2xl"></div>
             </div>
@@ -105,7 +109,6 @@ const HomePage = () => {
               icon={MessageSquare}
               title="Health Community"
               description="Connect with other women, share experiences, and get support from our caring health-focused community."
-              gradient
             />
             <FeatureCard
               icon={Shield}
@@ -121,7 +124,6 @@ const HomePage = () => {
               icon={Users}
               title="Expert Network"
               description="Access a network of women's health specialists and get professional guidance when you need it."
-              gradient
             />
             <FeatureCard
               icon={Zap}
@@ -137,7 +139,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-6 mb-16">
             <h2 className="text-4xl font-bold">Built on Trust & Security</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-foreground max-w-2xl mx-auto">
               Your health data deserves the highest level of security and privacy protection.
             </p>
           </div>
@@ -145,21 +147,21 @@ const HomePage = () => {
             <Card className="p-8 text-center shadow-medium">
               <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-semibold mb-4">Blockchain Secured</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground">
                 Immutable, decentralized storage ensures your data can never be altered or lost.
               </p>
             </Card>
-            <Card className="p-8 text-center shadow-medium gradient-soft">
+            <Card className="p-8 text-center shadow-medium">
               <Lock className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-semibold mb-4">End-to-End Encrypted</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground">
                 Military-grade encryption protects your sensitive health information at all times.
               </p>
             </Card>
             <Card className="p-8 text-center shadow-medium">
               <UserCheck className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-semibold mb-4">HIPAA Compliant</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground">
                 Full compliance with healthcare privacy regulations and women's health standards.
               </p>
             </Card>

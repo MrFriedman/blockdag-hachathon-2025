@@ -19,7 +19,7 @@ const FeatureCard = ({ icon: Icon, title, description, gradient }: FeatureCardPr
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">{description}</p>
+        <p className="text-foreground">{description}</p>
       </CardContent>
     </Card>
   );
