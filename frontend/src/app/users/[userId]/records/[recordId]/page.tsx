@@ -41,7 +41,7 @@ interface MedicalRecord {
 }
 
 const ShowRecord = ({ params }: Props) => {
-  const { userId, recordId } = params;
+  const { userId, recordId:number } = params;
 
   // Get the matching record for this user & recordId
   const record = mockRecord as MedicalRecord[];
@@ -89,11 +89,11 @@ const ShowRecord = ({ params }: Props) => {
                 <CardDescription>General details</CardDescription>
               </CardHeader>
               <CardContent className="grid md:grid-cols-2 gap-4">
-                <Field label="Title" value={record.title} />
-                <Field label="Category" value={record.category} />
-                <Field label="Date" value={record.date} />
-                <Field label="Doctor" value={record.doctor} />
-                <Field label="Hospital/Clinic" value={record.hospital} />
+                <Field label="Title" value={record[recordId].title} />
+                <Field label="Category" value={record[recordId].category} />
+                <Field label="Date" value={record[recordId].date} />
+                <Field label="Doctor" value={record[recordId].doctor} />
+                <Field label="Hospital/Clinic" value={record[recordId].hospital} />
               </CardContent>
             </Card>
 
@@ -107,12 +107,12 @@ const ShowRecord = ({ params }: Props) => {
                 <CardDescription>Clinical information</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Field label="Description" value={record.description} />
-                <Field label="Diagnosis" value={record.diagnosis} />
-                <Field label="Medications" value={record.medications} />
-                <Field label="Blood Type" value={record.bloodType} />
-                <Field label="Allergies" value={record.allergies} />
-                <Field label="Vital Signs" value={record.vitalSigns} />
+                <Field label="Description" value={record[recordId].description} />
+                <Field label="Diagnosis" value={record[recordId].diagnosis} />
+                <Field label="Medications" value={record[recordId].medications} />
+                <Field label="Blood Type" value={record[recordId].bloodType} />
+                <Field label="Allergies" value={record[recordId].allergies} />
+                <Field label="Vital Signs" value={record[recordId].vitalSigns} />
               </CardContent>
             </Card>
 
