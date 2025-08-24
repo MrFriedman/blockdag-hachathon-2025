@@ -150,7 +150,7 @@ export async function getOwner() {
   return contract.getOwner();
 }
 
-export async function addRecord(patientID, diagnosis, treatment) {
+export async function addRecord(patientID: number, diagnosis: string, treatment: string) {
   await restoreSession();
 
   try {
@@ -167,14 +167,14 @@ export async function addRecord(patientID, diagnosis, treatment) {
   }
 }
 
-export async function getPatientRecords(patientID) {
+export async function getPatientRecords(patientID: number) {
   await restoreSession();
   const records = await contract.getPatientRecords(patientID);
   console.log("Records = ", records);
   return records;
 }
 
-export async function authorizeProvider(providerAddress) {
+export async function authorizeProvider(providerAddress: any) {
   const tx = await contract.authorizeProvider(providerAddress);
   await tx.wait();
   return tx;
