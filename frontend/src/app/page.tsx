@@ -26,7 +26,7 @@ const HomePage = () => {
           <div className="flex items-center space-x-2">
             <Heart className="w-8 h-8 text-primary" />
             <span className="text-2xl font-bold bg-clip-text text-black">
-              WellChain
+              MediChain
             </span>
           </div>
           <div className="flex space-x-4">
@@ -176,7 +176,7 @@ const HomePage = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <Heart className="w-6 h-6 text-primary" />
-                <span className="text-xl font-bold">WellChain</span>
+                <span className="text-xl font-bold">MediChain</span>
               </div>
               <p className="text-muted-foreground">
                 Empowering women with secure, blockchain-based healthcare solutions.
@@ -211,7 +211,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 WellChain. All rights reserved. Built for women's health and empowerment.</p>
+            <p>&copy; 2025 MediChain. All rights reserved. Built for women's health and empowerment by Uluthandolwethu Ntshweni, Dylan Friedmann, Leo Kamhoot.</p>
           </div>
         </div>
       </footer>

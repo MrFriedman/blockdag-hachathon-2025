@@ -234,7 +234,7 @@ const AddRecord = () => {
                       onChange={(e) =>
                         handleInputChange("hospital", e.target.value)
                       }
-                      placeholder="WellChain Medical Center"
+                      placeholder="MediChain Medical Center"
                     />
                   </div>
                 </CardContent>

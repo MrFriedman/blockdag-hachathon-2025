@@ -13,7 +13,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { WellChainLogo } from "@/components/WellChainLogo";
+import { MediChainLogo } from "@/components/MediChainLogo";
 import {
   LayoutDashboard,
   Calendar,
@@ -46,13 +46,13 @@ export function DashboardSidebar() {
   return (
     <Sidebar collapsible="icon">
       <div className="p-4">
-        <WellChainLogo size="md" showText={state !== "collapsed"} />
+        <MediChainLogo size="md" showText={state !== "collapsed"} />
       </div>
 
       <SidebarContent>
         {/* Main Navigation */}
         <SidebarGroup>
-          <SidebarGroupLabel>WellChain</SidebarGroupLabel>
+          <SidebarGroupLabel>MediChain</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (

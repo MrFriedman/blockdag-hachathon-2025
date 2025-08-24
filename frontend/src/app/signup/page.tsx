@@ -9,11 +9,12 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, Wallet, AlertCircle, UserPlus, ArrowRight, Calendar, Phone, User, Shield, Import } from "lucide-react";
 import { WalletConnection } from "@/components/WalletConnection";
+import Link from "next/link";
 // --- Mock Components and Hooks for Self-Contained Demo ---
 
 const WellChainLogo = ({ size = "lg" }) => {
   const textSize = size === "lg" ? "text-2xl" : "text-xl";
-  return <div className={`font-bold ${textSize} text-primary-foreground`}>WellChain</div>;
+  return <div className={`font-bold ${textSize}`}>WellChain</div>;
 };
 
 const useToast = () => {
@@ -23,105 +24,6 @@ const useToast = () => {
     }
   };
 };
-
-{/*
-const WalletConnection = ({ onWalletConnected, isConnected: initialConnected = false }: { onWalletConnected?: (address: string) => void; isConnected?: boolean }) => {
-  const [isConnected, setIsConnected] = useState(initialConnected);
-  const [walletAddress, setWalletAddress] = useState("");
-  const [isConnecting, setIsConnecting] = useState(false);
-  const { toast } = useToast();
-
-  const connectWallet = async () => {
-    setIsConnecting(true);
-    
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      const mockAddress = "0xd831824b530222F9a749f7428f200d93f665c1";
-      setWalletAddress(mockAddress);
-      setIsConnected(true);
-      onWalletConnected?.(mockAddress);
-      
-      toast({
-        title: "Wallet Connected Successfully!",
-        description: `Connected to ${mockAddress.slice(0, 6)}...${mockAddress.slice(-4)}`,
-      });
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Connection Failed",
-        description: "Please make sure you have a Web3 wallet installed.",
-      });
-    } finally {
-      setIsConnecting(false);
-    }
-  };
-
-  if (isConnected) {
-    return (
-      <Card className="bg-medical-success/10 border-medical-success/20">
-        <CardContent className="pt-6">
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="h-6 w-6 text-medical-success" />
-            <div>
-              <p className="font-medium text-medical-success">Wallet Connected Successfully!</p>
-              <p className="text-sm text-muted-foreground">{walletAddress}</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="bg-gradient-card border-primary/20">
-      <CardHeader>
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-full bg-primary/10">
-            <Wallet className="h-5 w-5 text-primary" />
-          </div>
-          <div>
-            <CardTitle className="text-lg">Step 1: Connect Your E-Wallet</CardTitle>
-            <CardDescription>
-              Connect your blockchain wallet to securely store and manage your medical records.
-            </CardDescription>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="flex items-start gap-2 p-3 bg-primary/5 rounded-lg">
-            <AlertCircle className="h-5 w-5 text-primary mt-0.5" />
-            <div className="text-sm text-primary">
-              <p className="font-medium">Secure & Private</p>
-              <p>Your wallet address will be used to encrypt and secure your medical data on the blockchain.</p>
-            </div>
-          </div>
-          
-          <Button 
-            onClick={connectWallet} 
-            disabled={isConnecting}
-            size="lg"
-            className="w-full bg-gradient-primary hover:opacity-90"
-          >
-            {isConnecting ? (
-              <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                Connecting...
-              </>
-            ) : (
-              <>
-                <Wallet className="mr-2 h-4 w-4" />
-                Connect Wallet
-              </>
-            )}
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-*/}
 
 // --- Main SignUp Component ---
 const SignUp = () => {
@@ -182,14 +84,14 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
-      <div className="w-full max-w-lg">
+      <div className="w-full max-w-lg bg-white backdrop-blur-md rounded-lg shadow-lg p-6 sm:p-10">
         {/* Header */}
         <div className="text-center mb-8">
           <WellChainLogo size="lg" />
-          <h1 className="text-3xl font-bold text-primary-foreground mt-4 mb-2">
+          <h1 className="text-3xl font-bold mt-4 mb-2">
             Create Your WellChain Account
           </h1>
-          <p className="text-primary-foreground/80">
+          <p className="">
             Join the future of healthcare with secure blockchain medical records.
           </p>
         </div>
@@ -349,7 +251,7 @@ const SignUp = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-gradient-primary hover:opacity-90"
+                  className="w-full"
                 >
                   <UserPlus className="mr-2 h-4 w-4" />
                   Create Medical Profile
@@ -360,9 +262,11 @@ const SignUp = () => {
               <div className="text-center mt-4">
                 <p className="text-sm text-muted-foreground">
                   Already have an account?{" "}
+                  <Link href="/signin">
                   <span className="text-primary hover:underline cursor-pointer">
                     Sign in here
                   </span>
+                  </Link>
                 </p>
               </div>
             </CardContent>
