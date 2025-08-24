@@ -66,6 +66,7 @@ const AddRecord = () => {
     bloodType: "",
     vitalSigns: "",
   });
+
   const [contractData, setContractData] = useState({
     diagnosis: "",
     treatment: "",
@@ -95,7 +96,7 @@ const AddRecord = () => {
     //addRecord(...??)
     //
     console.log("recording to blockchain");
-    await addRecord(0, "Hello there", "General Kenobi");
+    await addRecord(0, contractData.diagnosis, contractData.treatment);
 
     toast({
       title: "Record Added Successfully",
@@ -266,32 +267,6 @@ const AddRecord = () => {
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="diagnosis">Diagnosis</Label>
-                      <Textarea
-                        id="diagnosis"
-                        value={formData.diagnosis}
-                        onChange={(e) =>
-                          handleInputChange("diagnosis", e.target.value)
-                        }
-                        placeholder="Medical diagnosis or findings"
-                        rows={2}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="medications">Medications</Label>
-                      <Textarea
-                        id="medications"
-                        value={formData.medications}
-                        onChange={(e) =>
-                          handleInputChange("medications", e.target.value)
-                        }
-                        placeholder="Prescribed medications"
-                        rows={2}
-                      />
-                    </div>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
                       <Label htmlFor="bloodType">Blood Type</Label>
                       <Select
                         value={formData.bloodType}
@@ -353,6 +328,8 @@ const AddRecord = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
+                  {/*
+
                   <div className="space-y-2">
                     <Label htmlFor="privateNotes">Private Notes</Label>
                     <Textarea
@@ -366,15 +343,16 @@ const AddRecord = () => {
                       className="border-accent/20 focus:border-accent"
                     />
                   </div>
+                  */}
                   {/*Diag and treatment for contract*/}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="diagnosis">Diagnosis</Label>
                       <Textarea
                         id="diagnosis"
-                        value={formData.diagnosis}
+                        value={contractData.diagnosis}
                         onChange={(e) =>
-                          handleInputChange("diagnosis", e.target.value)
+                          handleContractChange("diagnosis", e.target.value)
                         }
                         placeholder="Medical diagnosis or findings"
                         rows={2}
@@ -384,63 +362,15 @@ const AddRecord = () => {
                       <Label htmlFor="treatment">treatment</Label>
                       <Textarea
                         id="treatment"
-                        value={formData.medications}
+                        value={contractData.treatment}
                         onChange={(e) =>
-                          handleInputChange("treatment", e.target.value)
+                          handleContractChange("treatment", e.target.value)
                         }
                         placeholder="Prescribed treatment"
                         rows={2}
                       />
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-
-              {/* File Upload */}
-              <Card className="animate-fade-in">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Upload className="h-5 w-5 text-primary" />
-                    File Attachments
-                  </CardTitle>
-                  <CardDescription>
-                    Upload medical documents, images, or reports
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <Label htmlFor="files">Files</Label>
-                    <Input
-                      id="files"
-                      type="file"
-                      multiple
-                      accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
-                      onChange={handleFileChange}
-                      className="cursor-pointer"
-                    />
-                    <p className="text-xs text-muted-foreground">
-                      Supported formats: PDF, JPG, PNG, DOC, DOCX. Max 10MB per
-                      file.
-                    </p>
-                  </div>
-                  {files && files.length > 0 && (
-                    <div className="mt-4">
-                      <p className="text-sm font-medium mb-2">
-                        Selected files:
-                      </p>
-                      <div className="space-y-1">
-                        {Array.from(files).map((file, index) => (
-                          <div
-                            key={index}
-                            className="text-sm text-muted-foreground"
-                          >
-                            {file.name} ({(file.size / 1024 / 1024).toFixed(2)}{" "}
-                            MB)
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </CardContent>
               </Card>
 
@@ -482,4 +412,3 @@ const AddRecord = () => {
 };
 
 export default AddRecord;
-

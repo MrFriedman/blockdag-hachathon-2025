@@ -169,7 +169,9 @@ export async function addRecord(patientID, diagnosis, treatment) {
 
 export async function getPatientRecords(patientID) {
   await restoreSession();
-  return contract.getPatientRecords(patientID);
+  const records = await contract.getPatientRecords(patientID);
+  console.log("Records = ", records);
+  return records;
 }
 
 export async function authorizeProvider(providerAddress) {
