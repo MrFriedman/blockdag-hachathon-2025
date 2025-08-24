@@ -237,7 +237,6 @@ local_settings.py
 *.zip
 
 # MongoDB database files (if running locally)
-data/
 mongo-data/
 
 # Redis dump file
