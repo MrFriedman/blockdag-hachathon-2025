@@ -70,7 +70,7 @@ const Dashboard = () => {
 
         <main className="flex-1 p-6">
           <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4 border-b-2 border-primary/60 pb-2">
+            <div className="flex items-center gap-4 border-b-2 border-primary/0 pb-2">
               <SidebarTrigger />
               <div>
                 <h1 className="text-3xl font-bold">Medical Dashboard</h1>
@@ -89,8 +89,8 @@ const Dashboard = () => {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <Card className="border-primary/20 animate-fade-in">
+          <div className="grid md:grid-cols-3 gap-3 mb-3">
+            <Card className="border-primary/0 animate-fade-in">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -107,7 +107,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 animate-fade-in">
+            <Card className="border-primary/0 animate-fade-in">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -126,7 +126,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 animate-fade-in">
+            <Card className="border-primary/0 animate-fade-in">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -146,8 +146,85 @@ const Dashboard = () => {
             </Card>
           </div>
 
+          {/* Medical Records Section */}
+          <Card className="animate-scale-in mb-3">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="h-5 w-5 text-primary" />
+                    All Medical Records
+                  </CardTitle>
+                  <CardDescription>
+                    Your complete blockchain-secured health history
+                  </CardDescription>
+                </div>
+                <Button className="">
+                  <Link href="/add-record" className="flex items-center">
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add New Record
+                  </Link>
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {recentRecords.map((record) => (
+                  <div
+                    key={record.id}
+                    className="p-4 bg-gradient-card rounded-lg border border-primary/0 hover-scale"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <p className="font-medium">{record.title}</p>
+                          <Badge
+                            variant="outline"
+                            className="bg-medical-success/10 text-medical-success border-medical-success/20"
+                          >
+                            <Shield className="w-3 h-3 mr-1" />
+                            Blockchain Verified
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          {record.doctor}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {record.date}
+                        </p>
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                          <span>Hash: 0xa1b2c3...d4e5f6</span>
+                          <span>Block: #147,829</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <Badge
+                          variant={
+                            record.status === "completed"
+                              ? "default"
+                              : "secondary"
+                          }
+                          className={
+                            record.status === "completed"
+                              ? "bg-medical-success"
+                              : ""
+                          }
+                        >
+                          {record.status}
+                        </Badge>
+                        <Link href={"/users/0/records/" + record.id}>
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Upcoming Appointments */}
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="grid md:grid-cols-2 gap-3 mb-6">
             <Card className="animate-scale-in">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -163,7 +240,7 @@ const Dashboard = () => {
                   {upcomingAppointments.map((appointment) => (
                     <div
                       key={appointment.id}
-                      className="p-4 bg-gradient-card rounded-lg border border-primary/10 hover-scale"
+                      className="p-4 bg-gradient-card rounded-lg border border-primary/0 hover-scale"
                     >
                       <div className="flex items-start justify-between">
                         <div className="space-y-1">
@@ -247,83 +324,6 @@ const Dashboard = () => {
             </Card>
           </div>
 
-          {/* Medical Records Section */}
-          <Card className="animate-scale-in">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle className="flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-primary" />
-                    All Medical Records
-                  </CardTitle>
-                  <CardDescription>
-                    Your complete blockchain-secured health history
-                  </CardDescription>
-                </div>
-                <Button className="">
-                  <Link href="/add-record" className="flex items-center">
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add New Record
-                  </Link>
-                </Button>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {recentRecords.map((record) => (
-                  <div
-                    key={record.id}
-                    className="p-4 bg-gradient-card rounded-lg border border-primary/10 hover-scale"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <p className="font-medium">{record.title}</p>
-                          <Badge
-                            variant="outline"
-                            className="bg-medical-success/10 text-medical-success border-medical-success/20"
-                          >
-                            <Shield className="w-3 h-3 mr-1" />
-                            Blockchain Verified
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          {record.doctor}
-                        </p>
-                        <p className="text-sm text-muted-foreground">
-                          {record.date}
-                        </p>
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          <span>Hash: 0xa1b2c3...d4e5f6</span>
-                          <span>Block: #147,829</span>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <Badge
-                          variant={
-                            record.status === "completed"
-                              ? "default"
-                              : "secondary"
-                          }
-                          className={
-                            record.status === "completed"
-                              ? "bg-medical-success"
-                              : ""
-                          }
-                        >
-                          {record.status}
-                        </Badge>
-                        <Link href={"/users/0/records/" + record.id}>
-                          View Details
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
           {/* Blockchain Integration Status */}
           <Card className="mt-6">
             <CardContent className="pt-6">
@@ -361,4 +361,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

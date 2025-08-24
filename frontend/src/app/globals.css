@@ -117,7 +117,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background: linear-gradient(135deg, #FF69B4, #FF8C00); 
+    /* background: linear-gradient(135deg, #FF69B4, #FF8C00);  */
+    background: linear-gradient(
+      135deg,
+      rgba(255, 105, 180, 0.5),
+      rgba(255, 140, 0, 0.5)
+    );
     @apply text-foreground;
   }
 }
@@ -140,11 +145,15 @@
   }
 
   .gradient-soft {
-    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 142, 83, 0.1));
+    background: linear-gradient(
+      135deg,
+      rgba(255, 107, 107, 0.1),
+      rgba(255, 142, 83, 0.1)
+    );
   }
 
   .bg-pink-orange-gradient {
-    background: linear-gradient(135deg, #FF69B4, #FF8C00); /* Pink to Orange */
+    background: linear-gradient(135deg, #ff69b4, #ff8c00); /* Pink to Orange */
   }
 }
 
@@ -156,3 +165,4 @@
     @apply bg-background text-foreground;
   }
 }
+

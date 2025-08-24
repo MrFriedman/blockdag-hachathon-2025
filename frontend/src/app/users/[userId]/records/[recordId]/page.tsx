@@ -44,7 +44,7 @@ interface MedicalRecord {
 const ShowRecord = ({ params }: Props) => {
   const { userId, recordId } = params;
 
-  const recordID = Number(recordId)
+  const recordID = Number(recordId);
 
   // Get the matching record for this user & recordId
   const record = mockRecord as MedicalRecord[];
@@ -96,7 +96,10 @@ const ShowRecord = ({ params }: Props) => {
                 <Field label="Category" value={record[recordID].category} />
                 <Field label="Date" value={record[recordID].date} />
                 <Field label="Doctor" value={record[recordID].doctor} />
-                <Field label="Hospital/Clinic" value={record[recordID].hospital} />
+                <Field
+                  label="Hospital/Clinic"
+                  value={record[recordID].hospital}
+                />
               </CardContent>
             </Card>
 
@@ -110,12 +113,21 @@ const ShowRecord = ({ params }: Props) => {
                 <CardDescription>Clinical information</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Field label="Description" value={record[recordID].description} />
+                <Field
+                  label="Description"
+                  value={record[recordID].description}
+                />
                 <Field label="Diagnosis" value={record[recordID].diagnosis} />
-                <Field label="Medications" value={record[recordID].medications} />
+                <Field
+                  label="Medications"
+                  value={record[recordID].medications}
+                />
                 <Field label="Blood Type" value={record[recordID].bloodType} />
                 <Field label="Allergies" value={record[recordID].allergies} />
-                <Field label="Vital Signs" value={record[recordID].vitalSigns} />
+                <Field
+                  label="Vital Signs"
+                  value={record[recordID].vitalSigns}
+                />
               </CardContent>
             </Card>
 
