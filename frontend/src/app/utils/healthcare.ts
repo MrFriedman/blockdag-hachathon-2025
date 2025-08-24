@@ -134,7 +134,7 @@ export async function restoreSession() {
 
   contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-  return { account, contract };
+  return { account, contract };   
 }
 
 export async function initContract() {
@@ -147,14 +147,14 @@ export function getAccount() {
 
 export async function getOwner() {
   await restoreSession();
-  return contract.getOwner();
+  return contract?.getOwner();
 }
 
 export async function addRecord(patientID: number, diagnosis: string, treatment: string) {
   await restoreSession();
 
   try {
-    const tx = await contract.addRecord(
+    const tx = await contract?.addRecord(
       patientID,
       "Alice",
       diagnosis,
@@ -169,13 +169,13 @@ export async function addRecord(patientID: number, diagnosis: string, treatment:
 
 export async function getPatientRecords(patientID: number) {
   await restoreSession();
-  const records = await contract.getPatientRecords(patientID);
+  const records = await contract?.getPatientRecords(patientID);
   console.log("Records = ", records);
   return records;
 }
 
 export async function authorizeProvider(providerAddress: any) {
-  const tx = await contract.authorizeProvider(providerAddress);
+  const tx = await contract?.authorizeProvider(providerAddress);
   await tx.wait();
   return tx;
 }
