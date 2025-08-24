@@ -19,7 +19,7 @@ import Image from "next/image";
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen  gradient-landing">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-border">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -50,11 +50,7 @@ const HomePage = () => {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-                  Your Health,{" "}
-                  <span className="bg-clip-text text-transparent">
-                    Your Data
-                  </span>
-                  <br />
+                  Your Health, <br />
                   Your Community
                 </h1>
                 <p className="text-xl text-foreground leading-relaxed">
@@ -248,4 +244,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

@@ -144,6 +144,10 @@
     background: linear-gradient(135deg, #ff6b6b, #ff8e53);
   }
 
+  .gradient-landing {
+    background: linear-gradient(135deg, #ff69b4, #ff8c00);
+  }
+
   .gradient-soft {
     background: linear-gradient(
       135deg,
@@ -165,4 +169,3 @@
     @apply bg-background text-foreground;
   }
 }
-

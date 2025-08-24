@@ -376,9 +376,6 @@ const AddRecord = () => {
 
               {/* Submit Button */}
               <div className="flex justify-end gap-4">
-                <Button onClick={handleSubmit} type="button" variant="outline">
-                  Save as Draft
-                </Button>
                 <Button
                   type="submit"
                   disabled={
@@ -388,7 +385,7 @@ const AddRecord = () => {
                     !formData.date ||
                     !formData.doctor
                   }
-                  className="bg-gradient-primary hover:opacity-90"
+                  className="bg-transparent text-black"
                 >
                   {isSubmitting ? (
                     <>
@@ -396,11 +393,11 @@ const AddRecord = () => {
                       Storing on Blockchain...
                     </>
                   ) : (
-                    <>
-                      <Shield className="w-4 h-4 mr-2" />
-                      Store on Blockchain
-                    </>
+                    <></>
                   )}
+                </Button>
+                <Button onClick={handleSubmit} type="button" variant="outline">
+                  Save
                 </Button>
               </div>
             </form>
