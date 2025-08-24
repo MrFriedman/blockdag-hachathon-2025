@@ -41,7 +41,8 @@ interface MedicalRecord {
 }
 
 const ShowRecord = ({ params }: Props) => {
-  const { userId, recordId:number } = params;
+  const recordId = Number(params.recordId);
+  const { userId, recordId: number } = params;
 
   // Get the matching record for this user & recordId
   const record = mockRecord as MedicalRecord[];
@@ -93,7 +94,10 @@ const ShowRecord = ({ params }: Props) => {
                 <Field label="Category" value={record[recordId].category} />
                 <Field label="Date" value={record[recordId].date} />
                 <Field label="Doctor" value={record[recordId].doctor} />
-                <Field label="Hospital/Clinic" value={record[recordId].hospital} />
+                <Field
+                  label="Hospital/Clinic"
+                  value={record[recordId].hospital}
+                />
               </CardContent>
             </Card>
 
@@ -107,12 +111,21 @@ const ShowRecord = ({ params }: Props) => {
                 <CardDescription>Clinical information</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Field label="Description" value={record[recordId].description} />
+                <Field
+                  label="Description"
+                  value={record[recordId].description}
+                />
                 <Field label="Diagnosis" value={record[recordId].diagnosis} />
-                <Field label="Medications" value={record[recordId].medications} />
+                <Field
+                  label="Medications"
+                  value={record[recordId].medications}
+                />
                 <Field label="Blood Type" value={record[recordId].bloodType} />
                 <Field label="Allergies" value={record[recordId].allergies} />
-                <Field label="Vital Signs" value={record[recordId].vitalSigns} />
+                <Field
+                  label="Vital Signs"
+                  value={record[recordId].vitalSigns}
+                />
               </CardContent>
             </Card>
 
