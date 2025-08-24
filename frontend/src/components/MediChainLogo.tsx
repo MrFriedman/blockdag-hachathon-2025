@@ -1,11 +1,11 @@
 import { Heart } from "lucide-react";
 
-interface WellChainLogoProps {
+interface MediChainLogoProps {
   size?: "sm" | "md" | "lg";
   showText?: boolean;
 }
 
-export const WellChainLogo = ({ size = "md", showText = true }: WellChainLogoProps) => {
+export const MediChainLogo = ({ size = "md", showText = true }: MediChainLogoProps) => {
   const sizeClasses = {
     sm: "h-6 w-6",
     md: "h-8 w-8", 
@@ -25,7 +25,7 @@ export const WellChainLogo = ({ size = "md", showText = true }: WellChainLogoPro
       </div>
       {showText && (
         <span className={`font-bold text-primary ${textSizeClasses[size]}`}>
-          WellChain
+          MediChain
         </span>
       )}
     </div>
