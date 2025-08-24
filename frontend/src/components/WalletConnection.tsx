@@ -101,7 +101,7 @@ export const WalletConnection = ({ onWalletConnected, isConnected: initialConnec
             onClick={connectWallet}
             disabled={isConnecting}
             size="lg"
-            className="w-full bg-gradient-primary hover:opacity-90"
+            className="w-full"
           >
             {isConnecting ? (
               <>
