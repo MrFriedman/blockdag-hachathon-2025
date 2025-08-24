@@ -25,11 +25,26 @@ interface Props {
   };
 }
 
+interface MedicalRecord {
+  id: number;
+  userId: number;
+  title: string;
+  date: string;
+  description: string;
+  diagnosis: string;
+  medications: string;
+  bloodType: string;
+  allergies: string;
+  vitalSigns: string;
+  hospital: string;
+  doctor: string;
+}
+
 const ShowRecord = ({ params }: Props) => {
   const { userId, recordId } = params;
 
   // Get the matching record for this user & recordId
-  const record = mockRecord;
+  const record = mockRecord as MedicalRecord[];
   if (!record) {
     return (
       <div className="p-6">
