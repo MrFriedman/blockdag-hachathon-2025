@@ -11,7 +11,8 @@
     "allergies": "Penicillin",
     "vitalSigns": "BP: 120/80, HR: 72 bpm, Temp: 36.8°C",
     "hospital": "Green Valley Medical Center",
-    "doctor": "Dr. Alice Johnson"
+    "doctor": "Dr. Alice Johnson",
+    "category": "General"
   },
   {
     "id": 2,
@@ -25,7 +26,8 @@
     "allergies": "Penicillin",
     "vitalSigns": "BP: 118/76, HR: 88 bpm, Temp: 38.4°C",
     "hospital": "Green Valley Medical Center",
-    "doctor": "Dr. Alice Johnson"
+    "doctor": "Dr. Alice Johnson",
+    "category": "General"
   },
   {
     "id": 3,
@@ -39,7 +41,8 @@
     "allergies": "None",
     "vitalSigns": "BP: 130/85, HR: 78 bpm, Temp: 36.9°C",
     "hospital": "Sunrise Health Clinic",
-    "doctor": "Dr. Michael Smith"
+    "doctor": "Dr. Michael Smith",
+    "category": "General"
   },
   {
     "id": 4,
@@ -53,7 +56,8 @@
     "allergies": "Dust mites",
     "vitalSigns": "BP: 115/75, HR: 80 bpm, Temp: 37.0°C",
     "hospital": "Central City Hospital",
-    "doctor": "Dr. Emily Carter"
+    "doctor": "Dr. Emily Carter",
+    "category": "General"
   },
   {
     "id": 5,
@@ -67,6 +71,7 @@
     "allergies": "Peanuts, Shellfish",
     "vitalSigns": "BP: 122/78, HR: 76 bpm, Temp: 36.7°C",
     "hospital": "Northside Medical Center",
-    "doctor": "Dr. Rajesh Patel"
+    "doctor": "Dr. Rajesh Patel",
+    "category": "General"
   }
 ]
