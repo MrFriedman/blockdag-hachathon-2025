@@ -386,16 +386,7 @@ const AddRecord = () => {
                     !formData.doctor
                   }
                   className="bg-transparent text-black"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Shield className="w-4 h-4 mr-2 animate-spin" />
-                      Storing on Blockchain...
-                    </>
-                  ) : (
-                    <></>
-                  )}
-                </Button>
+                ></Button>
                 <Button onClick={handleSubmit} type="button" variant="outline">
                   Save
                 </Button>
