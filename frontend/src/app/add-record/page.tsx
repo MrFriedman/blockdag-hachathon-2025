@@ -319,10 +319,10 @@ const AddRecord = () => {
               <Card className="animate-fade-in border-accent/20">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Lock className="h-5 w-5 text-accent" />
+                    <Lock className="h-5 w-5" />
                     Private Information
                   </CardTitle>
-                  <CardDescription className="text-accent/80">
+                  <CardDescription>
                     This information will be encrypted and stored securely on
                     the blockchain
                   </CardDescription>
