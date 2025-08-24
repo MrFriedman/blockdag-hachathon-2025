@@ -4,8 +4,8 @@ import { init } from "next/dist/compiled/webpack/webpack";
 
 let provider = null;
 let signer = null;
-let contract = null;
-let account = null;
+let contract: ethers.Contract | null = null;
+let account: string | null = null;
 
 const contractAddress = "0x8b51426bA378109Ab5D19Ea18F6238fe9f66B12c";
 const contractABI = [
