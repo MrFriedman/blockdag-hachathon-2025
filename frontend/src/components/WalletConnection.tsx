@@ -5,15 +5,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Wallet, AlertCircle } from "lucide-react";
-
-// Extend the Window interface to include the ethereum property for MetaMask
-declare global {
-  interface Window {
-    ethereum?: {
-      request: (args: { method: string }) => Promise<any>;
-    };
-  }
-}
+// Import the initContract function from your service file
+import { initContract } from "@/app/utils/healthcare";
 
 interface WalletConnectionProps {
   onWalletConnected?: (address: string) => void;
@@ -29,26 +22,20 @@ export const WalletConnection = ({ onWalletConnected, isConnected: initialConnec
     setIsConnecting(true);
 
     try {
-      if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const address = accounts[0];
-        setWalletAddress(address);
-        setIsConnected(true);
-        // Call the parent component's handler with the wallet address
-        onWalletConnected?.(address);
+      // Use the initContract function from the service file
+      const { account } = await initContract();
+      
+      setWalletAddress(account);
+      setIsConnected(true);
+      onWalletConnected?.(account);
 
-        toast("Wallet Connected Successfully!", {
-          description: `Connected to ${address.slice(0, 6)}...${address.slice(-4)}`,
-        });
-      } else {
-        toast("Wallet Not Found", {
-          description: "Please install a Web3 wallet like MetaMask to continue.",
-          className: "bg-red-500 text-white",
-        });
-      }
+      toast("Wallet Connected Successfully!", {
+        description: `Connected to ${account.slice(0, 6)}...${account.slice(-4)}`,
+      });
     } catch (error) {
+      console.error("Connection failed:", error);
       toast("Connection Failed", {
-        description: "An error occurred while connecting. Please try again.",
+        description: "Please ensure you have a Web3 wallet installed and try again.",
         className: "bg-red-500 text-white",
       });
     } finally {

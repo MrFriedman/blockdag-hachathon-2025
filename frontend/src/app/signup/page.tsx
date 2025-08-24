@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, Wallet, AlertCircle, UserPlus, ArrowRight, Calendar, Phone, User, Shield } from "lucide-react";
+import { CheckCircle2, Wallet, AlertCircle, UserPlus, ArrowRight, Calendar, Phone, User, Shield, Import } from "lucide-react";
 import { WalletConnection } from "@/components/WalletConnection";
 // --- Mock Components and Hooks for Self-Contained Demo ---
 
