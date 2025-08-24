@@ -60,7 +60,7 @@ export default function Login() {
           </form>
           <div className="mt-6 text-center">
             <p className="text-center text-muted-foreground mt-4">
-              Don't have an account?
+              Dont have an account?
               <Link
                 href="/signup"
                 className="font-semibold text-primary hover:underline"

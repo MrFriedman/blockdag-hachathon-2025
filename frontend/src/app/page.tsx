@@ -107,7 +107,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-6 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold">
-              Empowering Women's Health
+              Empowering Womens Health
             </h2>
             <p className="text-xl text-foreground max-w-3xl mx-auto">
               Combining cutting-edge blockchain technology with community
@@ -184,7 +184,7 @@ const HomePage = () => {
               <UserCheck className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-semibold mb-4">HIPAA Compliant</h3>
               <p className="text-foreground">
-                Full compliance with healthcare privacy regulations and women's
+                Full compliance with healthcare privacy regulations and womens
                 health standards.
               </p>
             </Card>
@@ -236,7 +236,7 @@ const HomePage = () => {
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
             <p>
-              &copy; 2025 MediChain. All rights reserved. Built for women's
+              &copy; 2025 MediChain. All rights reserved. Built for womens
               health and empowerment by Uluthandolwethu Ntshweni, Dylan
               Friedmann, Leo Kamhoot.
             </p>
