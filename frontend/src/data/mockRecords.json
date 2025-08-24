@@ -1,0 +1,23 @@
+[
+  {
+    "id": "rec1",
+    "userId": "user1",
+    "title": "Annual Physical Exam",
+    "date": "2024-08-20",
+    "description": "Routine yearly checkup. Patient is in good health."
+  },
+  {
+    "id": "rec2",
+    "userId": "user1",
+    "title": "Blood Test",
+    "date": "2024-09-05",
+    "description": "Standard blood work. No issues."
+  },
+  {
+    "id": "rec3",
+    "userId": "user2",
+    "title": "Eye Exam",
+    "date": "2024-07-15",
+    "description": "Mild vision impairment, prescribed glasses."
+  }
+]
