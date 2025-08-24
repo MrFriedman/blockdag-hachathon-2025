@@ -1,23 +1,72 @@
 [
   {
-    "id": "rec1",
-    "userId": "user1",
-    "title": "Annual Physical Exam",
-    "date": "2024-08-20",
-    "description": "Routine yearly checkup. Patient is in good health."
+    "id": 1,
+    "userId": 101,
+    "title": "Annual Checkup",
+    "date": "2024-01-15",
+    "description": "Routine yearly physical examination.",
+    "diagnosis": "Healthy",
+    "medications": "None",
+    "bloodType": "O+",
+    "allergies": "Penicillin",
+    "vitalSigns": "BP: 120/80, HR: 72 bpm, Temp: 36.8°C",
+    "hospital": "Green Valley Medical Center",
+    "doctor": "Dr. Alice Johnson"
   },
   {
-    "id": "rec2",
-    "userId": "user1",
-    "title": "Blood Test",
-    "date": "2024-09-05",
-    "description": "Standard blood work. No issues."
+    "id": 2,
+    "userId": 101,
+    "title": "Flu Consultation",
+    "date": "2024-03-02",
+    "description": "Presented with fever, cough, and body aches.",
+    "diagnosis": "Seasonal Influenza",
+    "medications": "Oseltamivir, Paracetamol",
+    "bloodType": "O+",
+    "allergies": "Penicillin",
+    "vitalSigns": "BP: 118/76, HR: 88 bpm, Temp: 38.4°C",
+    "hospital": "Green Valley Medical Center",
+    "doctor": "Dr. Alice Johnson"
   },
   {
-    "id": "rec3",
-    "userId": "user2",
-    "title": "Eye Exam",
-    "date": "2024-07-15",
-    "description": "Mild vision impairment, prescribed glasses."
+    "id": 3,
+    "userId": 102,
+    "title": "Diabetes Follow-up",
+    "date": "2024-02-20",
+    "description": "Monitoring blood glucose levels.",
+    "diagnosis": "Type 2 Diabetes",
+    "medications": "Metformin 500mg daily",
+    "bloodType": "A-",
+    "allergies": "None",
+    "vitalSigns": "BP: 130/85, HR: 78 bpm, Temp: 36.9°C",
+    "hospital": "Sunrise Health Clinic",
+    "doctor": "Dr. Michael Smith"
+  },
+  {
+    "id": 4,
+    "userId": 103,
+    "title": "Asthma Checkup",
+    "date": "2024-04-10",
+    "description": "Mild wheezing after exercise.",
+    "diagnosis": "Exercise-induced Asthma",
+    "medications": "Albuterol Inhaler",
+    "bloodType": "B+",
+    "allergies": "Dust mites",
+    "vitalSigns": "BP: 115/75, HR: 80 bpm, Temp: 37.0°C",
+    "hospital": "Central City Hospital",
+    "doctor": "Dr. Emily Carter"
+  },
+  {
+    "id": 5,
+    "userId": 104,
+    "title": "Allergy Testing",
+    "date": "2024-05-05",
+    "description": "Skin prick tests conducted for suspected allergies.",
+    "diagnosis": "Peanut Allergy",
+    "medications": "Epinephrine Auto-injector (EpiPen)",
+    "bloodType": "AB+",
+    "allergies": "Peanuts, Shellfish",
+    "vitalSigns": "BP: 122/78, HR: 76 bpm, Temp: 36.7°C",
+    "hospital": "Northside Medical Center",
+    "doctor": "Dr. Rajesh Patel"
   }
 ]
