@@ -1,4 +1,4 @@
-'use client';
+"use client";
 // app/page.tsx
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,7 +11,7 @@ import {
   Zap,
   MessageSquare,
   Database,
-  UserCheck
+  UserCheck,
 } from "lucide-react";
 import FeatureCard from "@/components/FeatureCard";
 import TrustIndicator from "@/components/TrustIndicator";
@@ -33,7 +33,12 @@ const HomePage = () => {
             <Button variant="ghost">Features</Button>
             <Button variant="ghost">Security</Button>
             <Button variant="ghost">Community</Button>
-            <Button variant="secondary" onClick={() => window.location.href = '/getting-started'}>Get Started</Button>
+            <Button
+              variant="secondary"
+              onClick={() => (window.location.href = "/getting-started")}
+            >
+              Get Started
+            </Button>
           </div>
         </div>
       </nav>
@@ -53,16 +58,26 @@ const HomePage = () => {
                   Your Community
                 </h1>
                 <p className="text-xl text-foreground leading-relaxed">
-                  Secure your medical records on the blockchain while connecting with a
-                  supportive community of women. Take control of your health journey with
-                  complete privacy and ownership.
+                  Secure your medical records on the blockchain while connecting
+                  with a supportive community of women. Take control of your
+                  health journey with complete privacy and ownership.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="default" className="text-lg px-8 py-6" onClick={() => window.location.href = '/signup'}>
+                <Button
+                  size="lg"
+                  variant="default"
+                  className="text-lg px-8 py-6"
+                  onClick={() => (window.location.href = "/signup")}
+                >
                   Start Your Journey
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6" onClick={() => window.location.href = '/signin'}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-8 py-6"
+                  onClick={() => (window.location.href = "/signin")}
+                >
                   Login
                 </Button>
               </div>
@@ -95,8 +110,8 @@ const HomePage = () => {
               Empowering Women's Health
             </h2>
             <p className="text-xl text-foreground max-w-3xl mx-auto">
-              Combining cutting-edge blockchain technology with community support
-              to revolutionize how women manage their health data.
+              Combining cutting-edge blockchain technology with community
+              support to revolutionize how women manage their health data.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -140,29 +155,37 @@ const HomePage = () => {
           <div className="text-center space-y-6 mb-16">
             <h2 className="text-4xl font-bold">Built on Trust & Security</h2>
             <p className="text-xl text-foreground max-w-2xl mx-auto">
-              Your health data deserves the highest level of security and privacy protection.
+              Your health data deserves the highest level of security and
+              privacy protection.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-8 text-center shadow-medium">
               <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-2xl font-semibold mb-4">Blockchain Secured</h3>
+              <h3 className="text-2xl font-semibold mb-4">
+                Blockchain Secured
+              </h3>
               <p className="text-foreground">
-                Immutable, decentralized storage ensures your data can never be altered or lost.
+                Immutable, decentralized storage ensures your data can never be
+                altered or lost.
               </p>
             </Card>
             <Card className="p-8 text-center shadow-medium">
               <Lock className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-2xl font-semibold mb-4">End-to-End Encrypted</h3>
+              <h3 className="text-2xl font-semibold mb-4">
+                End-to-End Encrypted
+              </h3>
               <p className="text-foreground">
-                Military-grade encryption protects your sensitive health information at all times.
+                Military-grade encryption protects your sensitive health
+                information at all times.
               </p>
             </Card>
             <Card className="p-8 text-center shadow-medium">
               <UserCheck className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-semibold mb-4">HIPAA Compliant</h3>
               <p className="text-foreground">
-                Full compliance with healthcare privacy regulations and women's health standards.
+                Full compliance with healthcare privacy regulations and women's
+                health standards.
               </p>
             </Card>
           </div>
@@ -179,7 +202,8 @@ const HomePage = () => {
                 <span className="text-xl font-bold">MediChain</span>
               </div>
               <p className="text-muted-foreground">
-                Empowering women with secure, blockchain-based healthcare solutions.
+                Empowering women with secure, blockchain-based healthcare
+                solutions.
               </p>
             </div>
             <div>
@@ -211,7 +235,11 @@ const HomePage = () => {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2025 MediChain. All rights reserved. Built for women's health and empowerment by Uluthandolwethu Ntshweni, Dylan Friedmann, Leo Kamhoot.</p>
+            <p>
+              &copy; 2025 MediChain. All rights reserved. Built for women's
+              health and empowerment by Uluthandolwethu Ntshweni, Dylan
+              Friedmann, Leo Kamhoot.
+            </p>
           </div>
         </div>
       </footer>
@@ -220,3 +248,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
