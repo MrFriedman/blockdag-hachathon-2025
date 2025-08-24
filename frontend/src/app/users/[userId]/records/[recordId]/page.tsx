@@ -1,7 +1,7 @@
 "use client";
 
 import { getPatientRecords } from "@/app/utils/healthcare";
-import mockRecord from "@/data/mockRecord.json";
+import mockRecord from "@/data/mockRecords.json";
 import {
   Card,
   CardContent,
