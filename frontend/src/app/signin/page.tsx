@@ -2,13 +2,32 @@
 "use client";
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { WalletConnection } from '@/components/WalletConnection';
 
 export default function Login() {
+  const [step, setStep] = useState(1);
+  
   return (
+    <>
+    {step === 1 && (
+        <div className="min-h-screen flex items-center justify-center bg-pink-orange-gradient">
+          <Card className="p-8 shadow-strong w-full max-w-lg">
+            <h2 className="text-3xl font-bold bg-clip-text mb-6 text-center">
+              Connect Your Wallet
+            </h2>
+            <p className="text-muted-foreground mb-6 text-center">
+              Please connect your Web3 wallet to continue
+            </p>
+            <WalletConnection onWalletConnected={() => setStep(2)} />
+          </Card>
+        </div>
+    )}
+    
     <div className="min-h-screen flex items-center justify-center bg-pink-orange-gradient">
       <Card className="p-8 shadow-strong w-full max-w-lg">
         <h2 className="text-3xl font-bold bg-clip-text mb-6 text-center">
@@ -32,7 +51,7 @@ export default function Login() {
               id="password"
               placeholder="Enter password"
               type="password"
-            />
+              />
           </div>
           <Button asChild size="lg" variant="default" className="w-full text-lg px-8 py-6">
             <Link href="/dashboard">
@@ -50,5 +69,6 @@ export default function Login() {
         </div>
       </Card>
     </div>
+    </>
   );
 }
