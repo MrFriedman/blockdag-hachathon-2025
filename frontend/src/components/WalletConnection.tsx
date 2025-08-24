@@ -1,9 +1,16 @@
 "use client";
 
+import { initContract, getAccount } from "@/app/utils/healthcare";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { CheckCircle2, Wallet, AlertCircle } from "lucide-react";
 
 // Extend the Window interface to include the ethereum property for MetaMask
@@ -20,7 +27,10 @@ interface WalletConnectionProps {
   isConnected?: boolean;
 }
 
-export const WalletConnection = ({ onWalletConnected, isConnected: initialConnected = false }: WalletConnectionProps) => {
+export const WalletConnection = ({
+  onWalletConnected,
+  isConnected: initialConnected = false,
+}: WalletConnectionProps) => {
   const [isConnected, setIsConnected] = useState(initialConnected);
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [isConnecting, setIsConnecting] = useState(false);
@@ -29,20 +39,27 @@ export const WalletConnection = ({ onWalletConnected, isConnected: initialConnec
     setIsConnecting(true);
 
     try {
-      if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const address = accounts[0];
+      if (typeof window.ethereum !== "undefined") {
+        initContract();
+        let address = getAccount();
         setWalletAddress(address);
         setIsConnected(true);
-        // Call the parent component's handler with the wallet address
-        onWalletConnected?.(address);
+
+        // const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        // k
+        // const address = accounts[0];
+        // setWalletAddress(address);
+        // setIsConnected(true);
+        // // Call the parent component's handler with the wallet address
+        // onWalletConnected?.(address);
 
         toast("Wallet Connected Successfully!", {
           description: `Connected to ${address.slice(0, 6)}...${address.slice(-4)}`,
         });
       } else {
         toast("Wallet Not Found", {
-          description: "Please install a Web3 wallet like MetaMask to continue.",
+          description:
+            "Please install a Web3 wallet like MetaMask to continue.",
           className: "bg-red-500 text-white",
         });
       }
@@ -63,7 +80,9 @@ export const WalletConnection = ({ onWalletConnected, isConnected: initialConnec
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-6 w-6 text-medical-success" />
             <div>
-              <p className="font-medium text-medical-success">Wallet Connected Successfully!</p>
+              <p className="font-medium text-medical-success">
+                Wallet Connected Successfully!
+              </p>
               <p className="text-sm text-muted-foreground">{walletAddress}</p>
             </div>
           </div>
@@ -80,9 +99,12 @@ export const WalletConnection = ({ onWalletConnected, isConnected: initialConnec
             <Wallet className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <CardTitle className="text-lg">Step 1: Connect Your E-Wallet</CardTitle>
+            <CardTitle className="text-lg">
+              Step 1: Connect Your E-Wallet
+            </CardTitle>
             <CardDescription>
-              Connect your blockchain wallet to securely store and manage your medical records.
+              Connect your blockchain wallet to securely store and manage your
+              medical records.
             </CardDescription>
           </div>
         </div>
@@ -93,7 +115,10 @@ export const WalletConnection = ({ onWalletConnected, isConnected: initialConnec
             <AlertCircle className="h-5 w-5 text-primary mt-0.5" />
             <div className="text-sm text-primary">
               <p className="font-medium">Secure & Private</p>
-              <p>Your wallet address will be used to encrypt and secure your medical data on the blockchain.</p>
+              <p>
+                Your wallet address will be used to encrypt and secure your
+                medical data on the blockchain.
+              </p>
             </div>
           </div>
 
