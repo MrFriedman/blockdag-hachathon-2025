@@ -1,16 +1,29 @@
-'use client';
+"use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 //import { useToast } from "@/hooks/use-toast";
+import { addRecord } from "../utils/healthcare";
 import {
   FileText,
   Shield,
@@ -18,16 +31,24 @@ import {
   Calendar,
   User,
   Activity,
-  Lock
+  Lock,
 } from "lucide-react";
 
 const useToast = () => {
-    return {
-      toast: ({ title, description, variant }: { title: string; description: string; variant?: string }) => {
-        console.log(`Toast: ${title} - ${description} (Variant: ${variant})`);
-      }
-    };
+  return {
+    toast: ({
+      title,
+      description,
+      variant,
+    }: {
+      title: string;
+      description: string;
+      variant?: string;
+    }) => {
+      console.log(`Toast: ${title} - ${description} (Variant: ${variant})`);
+    },
   };
+};
 
 const AddRecord = () => {
   const { toast } = useToast();
@@ -43,22 +64,22 @@ const AddRecord = () => {
     privateNotes: "",
     allergies: "",
     bloodType: "",
-    vitalSigns: ""
+    vitalSigns: "",
   });
   const [contractData, setContractData] = useState({
     diagnosis: "",
-    treatment: ""
+    treatment: "",
   });
 
   const [files, setFiles] = useState<FileList | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleContractChange = (field: string, value: string) => {
-    setContractData(prev => ({ ...prev, [field]: value }));
+    setContractData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,12 +91,16 @@ const AddRecord = () => {
     setIsSubmitting(true);
 
     // Simulate blockchain submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // await new Promise(resolve => setTimeout(resolve, 2000));
     //addRecord(...??)
+    //
+    console.log("recording to blockchain");
+    await addRecord(0, "Hello there", "General Kenobi");
 
     toast({
       title: "Record Added Successfully",
-      description: "Your medical record has been encrypted and stored on the blockchain.",
+      description:
+        "Your medical record has been encrypted and stored on the blockchain.",
     });
 
     setIsSubmitting(false);
@@ -91,11 +116,11 @@ const AddRecord = () => {
       privateNotes: "",
       allergies: "",
       bloodType: "",
-      vitalSigns: ""
+      vitalSigns: "",
     });
     setContractData({
       diagnosis: "",
-      treatment: ""
+      treatment: "",
     });
     setFiles(null);
   };
@@ -104,17 +129,22 @@ const AddRecord = () => {
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <DashboardSidebar />
-        
+
         <main className="flex-1 p-6 bg-gradient-subtle">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">
               <SidebarTrigger />
               <div>
                 <h1 className="text-3xl font-bold">Add Medical Record</h1>
-                <p className="text-muted-foreground">Create a new blockchain-secured medical record</p>
+                <p className="text-muted-foreground">
+                  Create a new blockchain-secured medical record
+                </p>
               </div>
             </div>
-            <Badge variant="outline" className="bg-medical-success/10 text-medical-success border-medical-success/20">
+            <Badge
+              variant="outline"
+              className="bg-medical-success/10 text-medical-success border-medical-success/20"
+            >
               <Shield className="w-3 h-3 mr-1" />
               Blockchain Secured
             </Badge>
@@ -129,7 +159,9 @@ const AddRecord = () => {
                     <FileText className="h-5 w-5 text-primary" />
                     Basic Information
                   </CardTitle>
-                  <CardDescription>General details about the medical record</CardDescription>
+                  <CardDescription>
+                    General details about the medical record
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -137,22 +169,33 @@ const AddRecord = () => {
                     <Input
                       id="title"
                       value={formData.title}
-                      onChange={(e) => handleInputChange("title", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("title", e.target.value)
+                      }
                       placeholder="e.g., Annual Physical Exam"
                       required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="category">Category *</Label>
-                    <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)}>
+                    <Select
+                      value={formData.category}
+                      onValueChange={(value) =>
+                        handleInputChange("category", value)
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="consultation">Consultation</SelectItem>
+                        <SelectItem value="consultation">
+                          Consultation
+                        </SelectItem>
                         <SelectItem value="lab-results">Lab Results</SelectItem>
                         <SelectItem value="imaging">Imaging</SelectItem>
-                        <SelectItem value="prescription">Prescription</SelectItem>
+                        <SelectItem value="prescription">
+                          Prescription
+                        </SelectItem>
                         <SelectItem value="vaccination">Vaccination</SelectItem>
                         <SelectItem value="surgery">Surgery</SelectItem>
                         <SelectItem value="emergency">Emergency</SelectItem>
@@ -165,7 +208,9 @@ const AddRecord = () => {
                       id="date"
                       type="date"
                       value={formData.date}
-                      onChange={(e) => handleInputChange("date", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("date", e.target.value)
+                      }
                       required
                     />
                   </div>
@@ -174,7 +219,9 @@ const AddRecord = () => {
                     <Input
                       id="doctor"
                       value={formData.doctor}
-                      onChange={(e) => handleInputChange("doctor", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("doctor", e.target.value)
+                      }
                       placeholder="Dr. Sarah Chen"
                       required
                     />
@@ -184,7 +231,9 @@ const AddRecord = () => {
                     <Input
                       id="hospital"
                       value={formData.hospital}
-                      onChange={(e) => handleInputChange("hospital", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("hospital", e.target.value)
+                      }
                       placeholder="WellChain Medical Center"
                     />
                   </div>
@@ -198,7 +247,9 @@ const AddRecord = () => {
                     <Activity className="h-5 w-5 text-primary" />
                     Medical Details
                   </CardTitle>
-                  <CardDescription>Clinical information and findings</CardDescription>
+                  <CardDescription>
+                    Clinical information and findings
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
@@ -206,7 +257,9 @@ const AddRecord = () => {
                     <Textarea
                       id="description"
                       value={formData.description}
-                      onChange={(e) => handleInputChange("description", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("description", e.target.value)
+                      }
                       placeholder="Brief description of the medical record"
                       rows={3}
                     />
@@ -217,7 +270,9 @@ const AddRecord = () => {
                       <Textarea
                         id="diagnosis"
                         value={formData.diagnosis}
-                        onChange={(e) => handleInputChange("diagnosis", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("diagnosis", e.target.value)
+                        }
                         placeholder="Medical diagnosis or findings"
                         rows={2}
                       />
@@ -227,7 +282,9 @@ const AddRecord = () => {
                       <Textarea
                         id="medications"
                         value={formData.medications}
-                        onChange={(e) => handleInputChange("medications", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("medications", e.target.value)
+                        }
                         placeholder="Prescribed medications"
                         rows={2}
                       />
@@ -236,7 +293,12 @@ const AddRecord = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="bloodType">Blood Type</Label>
-                      <Select value={formData.bloodType} onValueChange={(value) => handleInputChange("bloodType", value)}>
+                      <Select
+                        value={formData.bloodType}
+                        onValueChange={(value) =>
+                          handleInputChange("bloodType", value)
+                        }
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Select blood type" />
                         </SelectTrigger>
@@ -257,7 +319,9 @@ const AddRecord = () => {
                       <Input
                         id="allergies"
                         value={formData.allergies}
-                        onChange={(e) => handleInputChange("allergies", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("allergies", e.target.value)
+                        }
                         placeholder="Known allergies"
                       />
                     </div>
@@ -267,7 +331,9 @@ const AddRecord = () => {
                     <Input
                       id="vitalSigns"
                       value={formData.vitalSigns}
-                      onChange={(e) => handleInputChange("vitalSigns", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("vitalSigns", e.target.value)
+                      }
                       placeholder="BP: 120/80, HR: 72, Temp: 98.6°F"
                     />
                   </div>
@@ -282,7 +348,8 @@ const AddRecord = () => {
                     Private Information
                   </CardTitle>
                   <CardDescription className="text-accent/80">
-                    This information will be encrypted and stored securely on the blockchain
+                    This information will be encrypted and stored securely on
+                    the blockchain
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -291,7 +358,9 @@ const AddRecord = () => {
                     <Textarea
                       id="privateNotes"
                       value={formData.privateNotes}
-                      onChange={(e) => handleInputChange("privateNotes", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("privateNotes", e.target.value)
+                      }
                       placeholder="Private medical notes, sensitive information, personal observations..."
                       rows={4}
                       className="border-accent/20 focus:border-accent"
@@ -304,7 +373,9 @@ const AddRecord = () => {
                       <Textarea
                         id="diagnosis"
                         value={formData.diagnosis}
-                        onChange={(e) => handleInputChange("diagnosis", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("diagnosis", e.target.value)
+                        }
                         placeholder="Medical diagnosis or findings"
                         rows={2}
                       />
@@ -314,7 +385,9 @@ const AddRecord = () => {
                       <Textarea
                         id="treatment"
                         value={formData.medications}
-                        onChange={(e) => handleInputChange("treatment", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("treatment", e.target.value)
+                        }
                         placeholder="Prescribed treatment"
                         rows={2}
                       />
@@ -330,7 +403,9 @@ const AddRecord = () => {
                     <Upload className="h-5 w-5 text-primary" />
                     File Attachments
                   </CardTitle>
-                  <CardDescription>Upload medical documents, images, or reports</CardDescription>
+                  <CardDescription>
+                    Upload medical documents, images, or reports
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
@@ -344,16 +419,23 @@ const AddRecord = () => {
                       className="cursor-pointer"
                     />
                     <p className="text-xs text-muted-foreground">
-                      Supported formats: PDF, JPG, PNG, DOC, DOCX. Max 10MB per file.
+                      Supported formats: PDF, JPG, PNG, DOC, DOCX. Max 10MB per
+                      file.
                     </p>
                   </div>
                   {files && files.length > 0 && (
                     <div className="mt-4">
-                      <p className="text-sm font-medium mb-2">Selected files:</p>
+                      <p className="text-sm font-medium mb-2">
+                        Selected files:
+                      </p>
                       <div className="space-y-1">
                         {Array.from(files).map((file, index) => (
-                          <div key={index} className="text-sm text-muted-foreground">
-                            {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+                          <div
+                            key={index}
+                            className="text-sm text-muted-foreground"
+                          >
+                            {file.name} ({(file.size / 1024 / 1024).toFixed(2)}{" "}
+                            MB)
                           </div>
                         ))}
                       </div>
@@ -364,12 +446,18 @@ const AddRecord = () => {
 
               {/* Submit Button */}
               <div className="flex justify-end gap-4">
-                <Button type="button" variant="outline">
+                <Button onClick={handleSubmit} type="button" variant="outline">
                   Save as Draft
                 </Button>
                 <Button
                   type="submit"
-                  disabled={isSubmitting || !formData.title || !formData.category || !formData.date || !formData.doctor}
+                  disabled={
+                    isSubmitting ||
+                    !formData.title ||
+                    !formData.category ||
+                    !formData.date ||
+                    !formData.doctor
+                  }
                   className="bg-gradient-primary hover:opacity-90"
                 >
                   {isSubmitting ? (
@@ -394,3 +482,4 @@ const AddRecord = () => {
 };
 
 export default AddRecord;
+

@@ -1,5 +1,6 @@
 // src/utils/contractService.js
 import { ethers } from "ethers";
+import { init } from "next/dist/compiled/webpack/webpack";
 
 let provider = null;
 let signer = null;
@@ -115,19 +116,29 @@ const contractABI = [
   },
 ];
 
-export async function initContract() {
+function getUserSession() {}
+
+export async function restoreSession() {
+  console.log("Initing contract");
   if (!window.ethereum) {
     throw new Error("MetaMask not found");
   }
 
+  console.log("getting the provider");
   provider = new ethers.providers.Web3Provider(window.ethereum);
+  console.log("provider: ", provider);
   await provider.send("eth_requestAccounts", []);
   signer = provider.getSigner();
   account = await signer.getAddress();
+  console.log("accoung", account);
 
   contract = new ethers.Contract(contractAddress, contractABI, signer);
 
   return { account, contract };
+}
+
+export async function initContract() {
+  return restoreSession();
 }
 
 export function getAccount() {
@@ -135,16 +146,29 @@ export function getAccount() {
 }
 
 export async function getOwner() {
+  await restoreSession();
   return contract.getOwner();
 }
 
 export async function addRecord(patientID, diagnosis, treatment) {
-  const tx = await contract.addRecord(patientID, "Alice", diagnosis, treatment);
-  await tx.wait();
-  return tx;
+  await restoreSession();
+
+  try {
+    const tx = await contract.addRecord(
+      patientID,
+      "Alice",
+      diagnosis,
+      treatment,
+    );
+    console.log(tx);
+    return tx;
+  } catch (err) {
+    throw "Add record failed";
+  }
 }
 
 export async function getPatientRecords(patientID) {
+  await restoreSession();
   return contract.getPatientRecords(patientID);
 }
 
