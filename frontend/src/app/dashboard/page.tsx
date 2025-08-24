@@ -18,6 +18,7 @@ import {
   TrendingUp,
   Shield
 } from "lucide-react";
+import Link from 'next/link';
 
 const Dashboard = () => {
   const upcomingAppointments = [
@@ -63,11 +64,11 @@ const Dashboard = () => {
 
         <main className="flex-1 p-6">
           <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 border-b-2 border-primary/60 pb-2">
               <SidebarTrigger />
               <div>
                 <h1 className="text-3xl font-bold">Medical Dashboard</h1>
-                <p className="text-muted-foreground">Your Health Records</p>
+                <p className="text-foreground">Your Health Records</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -75,48 +76,44 @@ const Dashboard = () => {
                 <Shield className="w-3 h-3 mr-1" />
                 Blockchain Secured
               </Badge>
-              <Button>
-                <Plus className="w-4 h-4 mr-2" />
-                New Record
-              </Button>
             </div>
           </div>
 
           {/* Stats Cards */}
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <Card className="bg-gradient-card border-primary/20 animate-fade-in">
+            <Card className="border-primary/20 animate-fade-in">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground">Total Records</p>
+                    <p className="text-sm font-medium text-foreground">Total Records</p>
                     <p className="text-2xl font-bold">24</p>
-                    <p className="text-xs text-muted-foreground mt-1">Secured on blockchain</p>
+                    <p className="text-xs text-foreground mt-1">Secured on blockchain</p>
                   </div>
                   <FileText className="h-8 w-8 text-primary" />
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-card border-primary/20 animate-fade-in">
+            <Card className="border-primary/20 animate-fade-in">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground">Blockchain Status</p>
+                    <p className="text-sm font-medium text-foreground">Blockchain Status</p>
                     <p className="text-2xl font-bold text-medical-success">Active</p>
-                    <p className="text-xs text-muted-foreground mt-1">All records synchronized</p>
+                    <p className="text-xs text-foreground mt-1">All records synchronized</p>
                   </div>
                   <Shield className="h-8 w-8 text-medical-success" />
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-card border-primary/20 animate-fade-in">
+            <Card className="border-primary/20 animate-fade-in">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground">Upcoming Appointments</p>
+                    <p className="text-sm font-medium text-foreground">Upcoming Appointments</p>
                     <p className="text-2xl font-bold">{upcomingAppointments.length}</p>
-                    <p className="text-xs text-muted-foreground mt-1">Next: {upcomingAppointments[0]?.date}</p>
+                    <p className="text-xs text-foreground mt-1">Next: {upcomingAppointments[0]?.date}</p>
                   </div>
                   <Calendar className="h-8 w-8 text-primary" />
                 </div>
@@ -217,9 +214,11 @@ const Dashboard = () => {
                   </CardTitle>
                   <CardDescription>Your complete blockchain-secured health history</CardDescription>
                 </div>
-                <Button className="bg-gradient-primary hover:opacity-90">
+                <Button className="">
+                  <Link href="/add-record" className="flex items-center">
                   <Plus className="w-4 h-4 mr-2" />
                   Add New Record
+                  </Link>
                 </Button>
               </div>
             </CardHeader>
@@ -257,33 +256,17 @@ const Dashboard = () => {
                     </div>
                   </div>
                 ))}
-                
-                {/* Upload New Record Card */}
-                <div className="p-6 border-2 border-dashed border-primary/30 rounded-lg bg-gradient-card/50 hover:border-primary/50 transition-colors">
-                  <div className="text-center space-y-3">
-                    <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Plus className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-primary">Upload Medical Record</h3>
-                      <p className="text-sm text-muted-foreground">Add consultation reports, lab results, or medical documents</p>
-                    </div>
-                    <Button className="bg-gradient-primary hover:opacity-90">
-                      Choose Files to Upload
-                    </Button>
-                  </div>
-                </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Blockchain Integration Status */}
-          <Card className="mt-6 bg-gradient-hero text-primary-foreground">
+          <Card className="mt-6">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold">Blockchain Integration</h3>
-                  <p className="text-primary-foreground/80">Your medical records are securely stored and encrypted on the blockchain</p>
+                  <p className="">Your medical records are securely stored and encrypted on the blockchain</p>
                   <div className="flex items-center gap-4 text-sm">
                     <div className="flex items-center gap-1">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -297,7 +280,7 @@ const Dashboard = () => {
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-bold">100%</p>
-                  <p className="text-sm text-primary-foreground/80">Synchronized</p>
+                  <p className="text-sm">Synchronized</p>
                 </div>
               </div>
             </CardContent>

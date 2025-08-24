@@ -27,8 +27,7 @@ import { cn } from "@/lib/utils"; // Import utility for conditional classnames
 const menuItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Add Record", url: "/add-record", icon: Plus },
-  { title: "Medical Records", url: "/records", icon: FileText },
-  { title: "Settings", url: "/settings", icon: Settings },
+  { title: "Settings", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", icon: Settings },
 ];
 
 export function DashboardSidebar() {
